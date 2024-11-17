@@ -96,7 +96,7 @@ export default function Home() {
             {isPending ? (
               <div className="flex items-center gap-2">
                 <LoaderCircleIcon className="animate-spin" />
-                <span>Predicting...</span>
+                <span>Analyzing...</span>
               </div>
             ) : (
               "Check Sentiment"
@@ -106,7 +106,7 @@ export default function Home() {
         {prediction && (
           <div className="space-y-8">
             <Separator />
-            <div className="flex w-full items-start gap-4 rounded-lg border border-border p-4">
+            <div className="flex w-full items-center gap-4 rounded-lg border border-border p-4">
               {isPending ? (
                 <LoadingCard />
               ) : (
@@ -114,7 +114,7 @@ export default function Home() {
                   <div className="relative h-28 w-32 flex-none">
                     <Chart
                       score={prediction.score}
-                      className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                      className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[.6]"
                     />
                   </div>
                   <div className="space-y-2 [&_label]:text-xs [&_label]:text-zinc-400 [&_p]:font-medium [&_p]:text-zinc-700">

@@ -33,7 +33,7 @@ export default function Chart({
   return (
     <ChartContainer
       config={chartConfig}
-      className={cn("mx-auto aspect-square h-[200px] scale-[.6]", className)}
+      className={cn("mx-auto aspect-square h-[200px]", className)}
     >
       <RadialBarChart
         data={chartData}

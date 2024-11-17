@@ -7,7 +7,8 @@
     "dev": "concurrently \"npm run dev:next\" \"npm run dev:py\"",
     "dev:next": "cd web && npm run dev",
     "dev:py": "cd deep_learning && python app.py",
-    "venv": "cd deep_learning && venv/Scripts/activate"
+    "venv": "cd deep_learning && venv/Scripts/activate",
+    "format": "cd web && npm run format"
   },
   "keywords": [
     "deep-learning",
