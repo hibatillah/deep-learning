@@ -54,6 +54,7 @@ export default function Home() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            'Cache-Control': 'no-store'
           },
           body: JSON.stringify(data),
         })
@@ -90,6 +91,7 @@ export default function Home() {
               id="review"
               name="review"
               placeholder="Enter your review"
+              required
             />
           </div>
           <Button type="submit">
@@ -106,7 +108,7 @@ export default function Home() {
         {prediction && (
           <div className="space-y-8">
             <Separator />
-            <div className="flex w-full items-center gap-4 rounded-lg border border-border p-4">
+            <div className="flex w-full items-center gap-4 rounded-lg border border-border p-4 overflow-hidden">
               {isPending ? (
                 <LoadingCard />
               ) : (
@@ -117,14 +119,14 @@ export default function Home() {
                       className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[.6]"
                     />
                   </div>
-                  <div className="space-y-2 [&_label]:text-xs [&_label]:text-zinc-400 [&_p]:font-medium [&_p]:text-zinc-700">
+                  <div className="space-y-2 flex-auto [&_label]:text-xs [&_label]:text-zinc-400 [&_p]:font-medium [&_p]:text-zinc-700">
                     <div className="flex flex-col leading-tight">
                       <label>Sentiment</label>
                       <p>{prediction.sentiment}</p>
                     </div>
                     <div className="flex flex-col leading-tight">
                       <label>Review</label>
-                      <p>{prediction.review}</p>
+                      <p className="text-ellipsis">{prediction.review}</p>
                     </div>
                   </div>
                 </>
