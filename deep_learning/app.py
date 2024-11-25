@@ -62,7 +62,7 @@ def predict_audio(file_path):
         print(f"Class: {class_label}, Probability: {probability: .4f}")
 
     predicted_class = classes[predicted_class_index]
-    accuracy = class_probabilities[predicted_class_index]
+    accuracy = float(class_probabilities[predicted_class_index])
 
     return predicted_class, accuracy
 
@@ -130,7 +130,6 @@ def audio():
             predicted_class, accuracy = predict_audio(audio)
 
             response = jsonify({"prediction": predicted_class, "accuracy": accuracy})
-            response.headers["Content-Type"] = "multipart/form-data"
 
             return response
         except Exception as e:

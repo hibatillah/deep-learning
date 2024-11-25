@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 
-import { LoaderCircleIcon } from "lucide-react"
+import { CircleAlertIcon, LoaderCircleIcon } from "lucide-react"
 
 function LoadingCard() {
   return (
@@ -34,14 +34,17 @@ export type TextPrediction = {
   score: number
 }
 
+export type Status = "success" | "failed" | "idle"
+
 export default function TextSentiment() {
   const [isPending, startTransition] = React.useTransition()
   const [prediction, setPrediction] = React.useState<TextPrediction>()
+  const [status, setStatus] = React.useState<Status>("idle")
 
   const predict = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
 
+    const formData = new FormData(event.currentTarget)
     const data = {
       review: formData.get("review"),
     }
@@ -59,12 +62,14 @@ export default function TextSentiment() {
 
         const result = await response.json()
 
+        setStatus("success")
         setPrediction({
           review: result.review,
           sentiment: result.prediction,
           score: result.score * 100,
         })
       } catch (error) {
+        setStatus("failed")
         console.error("Error:", error)
       }
     })
@@ -102,13 +107,13 @@ export default function TextSentiment() {
           )}
         </Button>
       </form>
-      {prediction && (
+      {status !== "idle" && (
         <div className="space-y-8">
           <Separator />
           <div className="flex w-full items-center gap-4 overflow-hidden rounded-lg border border-border p-4">
             {isPending ? (
               <LoadingCard />
-            ) : (
+            ) : prediction && status === "success" ? (
               <>
                 <div className="relative h-28 w-32 flex-none">
                   <Chart
@@ -127,6 +132,11 @@ export default function TextSentiment() {
                   </div>
                 </div>
               </>
+            ) : (
+              <div className="flex items-center gap-3">
+                <CircleAlertIcon className="size-4 text-muted-foreground" />
+                <span className="text-sm text-primary">Failed to predict</span>
+              </div>
             )}
           </div>
         </div>

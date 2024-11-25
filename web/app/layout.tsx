@@ -8,8 +8,8 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Deep Learning Team 1",
-  description: "Deep learning text sentiment analysis project team 1",
+  title: "Deep Learning",
+  description: "Deep learning project",
 }
 
 export default function RootLayout({
@@ -18,11 +18,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
+          disableTransitionOnChange
         >
           {children}
         </ThemeProvider>

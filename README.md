@@ -1,6 +1,6 @@
 ## Text Sentiment Analysis
 
-Team 1 Deep Learning project using text sentiment analysis.
+Deep Learning project using text sentiment analysis.
 
 ### Tech Stack
 - Deep learning project using Flask `v3.1.0`
@@ -11,7 +11,7 @@ Team 1 Deep Learning project using text sentiment analysis.
 1. Clone this repository
 
 ```bash
-git clone https://github.com/hibatillah/deeplearning_team1
+git clone https://github.com/hibatillah/deep-learning
 ```
 
 2. Create virtual environment for python
@@ -45,7 +45,10 @@ npm install
 
 5. Run project
 
+> Use all commands to run in the project `root`.
+
 ```bash
+# ./
 npm run dev
 ```
 
@@ -60,8 +63,7 @@ npm run dev:next
 npm run dev:py
 ```
 
-> [!IMPORTANT]
-> Use all commands to run in the project root. <br>
+> [!IMPORTANT] <br>
 > Make sure to activate `venv` before running the project, specifically for `deep_learning` project.
 
 6. Open `web` project at [localhost:3000](http://localhost:3000) and `deep_learning` project at [localhost:8000](http://localhost:8000)

@@ -1,13 +1,14 @@
 import React from "react"
 
-import Chart from "@/components/custom/chart"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 
-import { LoaderCircleIcon, PauseIcon, PlayIcon } from "lucide-react"
+import { Status } from "./text-sentiment"
+
+import { CircleAlertIcon, LoaderCircleIcon } from "lucide-react"
 
 function LoadingCard() {
   return (
@@ -42,8 +43,9 @@ export default function AudioClassification() {
   const [isPending, startTransition] = React.useTransition()
   const [prediction, setPrediction] = React.useState<AudioPrediction>()
   const [audioSrc, setAudioSrc] = React.useState<AudioFile>()
-  const [audioFile, setAudioFile] = React.useState<File | null>(null);
+  const [audioFile, setAudioFile] = React.useState<File | null>(null)
   const [isPlay, setIsPlay] = React.useState<boolean>(false)
+  const [status, setStatus] = React.useState<Status>("idle")
   const previousAudioSrc = React.useRef<string | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)
 
@@ -62,17 +64,21 @@ export default function AudioClassification() {
           method: "POST",
           body: formData,
         })
-
         const result = await response.json()
+        console.log("result", result)
 
         addAudioToPlayer(audio)
+        setStatus("success")
         setPrediction({
           classes: result.prediction,
           accuracy: result.accuracy,
         })
       } catch (error) {
+        setStatus("failed")
         console.error("Error:", error)
       }
+
+      console.log(prediction?.classes, prediction?.accuracy)
     })
   }
 
@@ -98,9 +104,9 @@ export default function AudioClassification() {
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
-      setAudioFile(event.target.files[0]);
+      setAudioFile(event.target.files[0])
     }
-  };
+  }
 
   const togglePlayPause = () => {
     if (audioRef.current) {
@@ -139,7 +145,7 @@ export default function AudioClassification() {
             className="text-muted-foreground"
           >
             <span>Select audio file</span>
-            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-500">
+            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-600 dark:text-zinc-400">
               {".wav"}
             </span>
           </Label>
@@ -164,35 +170,47 @@ export default function AudioClassification() {
           )}
         </Button>
       </form>
-      {prediction && audioSrc && (
+      {status !== "idle" && (
         <div className="space-y-8">
           <Separator />
           <div className="flex w-full items-center gap-4 overflow-hidden rounded-lg border border-border p-4">
             {isPending ? (
               <LoadingCard />
             ) : (
-              <>
-                <div className="flex flex-col leading-tight">
-                  <p className="text-xs text-muted-foreground">
-                    Diprediksi sebagai suara 
-		    <span className="text-primary ms-1">
-		      {prediction.classes}
-		    </span>
-                  </p>
-                </div>
-                <audio
-                  ref={audioRef}
-                  src={audioSrc.file}
-                ></audio>
-                <Button
-                  size="sm"
-                  variant="secondary"
-                  onClick={togglePlayPause}
-                  className="ms-auto h-8 rounded-full text-xs text-primary"
-                >
-                  {isPlay ? "Playing..." : "Play audio"}
-                </Button>
-              </>
+              prediction &&
+              audioSrc && (
+                <>
+                  {!prediction.classes || status === "failed" ? (
+                    <div className="flex items-center gap-3">
+                      <CircleAlertIcon className="size-4 text-muted-foreground" />
+                      <span className="text-sm text-primary">
+                        Failed to predict
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col leading-tight">
+                      <p className="text-xs text-muted-foreground">
+                        Diprediksi sebagai suara
+                        <span className="ms-1 text-primary">
+                          {prediction.classes}
+                        </span>
+                      </p>
+                    </div>
+                  )}
+                  <audio
+                    ref={audioRef}
+                    src={audioSrc.file}
+                  ></audio>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    onClick={togglePlayPause}
+                    className="ms-auto h-8 rounded-full text-xs text-primary"
+                  >
+                    {isPlay ? "Playing..." : "Play audio"}
+                  </Button>
+                </>
+              )
             )}
           </div>
         </div>
