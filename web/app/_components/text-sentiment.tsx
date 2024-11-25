@@ -116,7 +116,7 @@ export default function TextSentiment() {
                     className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[.6]"
                   />
                 </div>
-                <div className="flex-auto space-y-2 [&_label]:text-xs [&_label]:text-zinc-400 [&_p]:font-medium [&_p]:text-zinc-700">
+                <div className="flex-auto space-y-2 [&_label]:text-xs [&_label]:text-muted-foreground [&_p]:font-medium [&_p]:text-primary">
                   <div className="flex flex-col leading-tight">
                     <label>Sentiment</label>
                     <p>{prediction.sentiment}</p>

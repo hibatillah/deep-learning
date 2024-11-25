@@ -121,17 +121,15 @@ def audio():
             </p>"""
 
     if request.method == "POST":
-        data = request.get_json()
-        audio = data.get("audio")
+        audio = request.files.get("audio")
 
         if not audio:
             return jsonify({"error": "Audio is required"}), 400
 
         try:
             predicted_class, accuracy = predict_audio(audio)
-            response = jsonify(
-                {"prediction": predicted_class, "accuracy": accuracy}
-            )
+
+            response = jsonify({"prediction": predicted_class, "accuracy": accuracy})
             response.headers["Content-Type"] = "multipart/form-data"
 
             return response

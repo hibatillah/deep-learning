@@ -42,6 +42,7 @@ export default function AudioClassification() {
   const [isPending, startTransition] = React.useTransition()
   const [prediction, setPrediction] = React.useState<AudioPrediction>()
   const [audioSrc, setAudioSrc] = React.useState<AudioFile>()
+  const [audioFile, setAudioFile] = React.useState<File | null>(null);
   const [isPlay, setIsPlay] = React.useState<boolean>(false)
   const previousAudioSrc = React.useRef<string | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)
@@ -49,17 +50,16 @@ export default function AudioClassification() {
   const predict = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
-    const formData = new FormData(event.currentTarget)
-    const audio = formData.get("audio") as File
+    const form = new FormData(event.currentTarget)
+    const audio = form.get("audio") as File
+
+    const formData = new FormData()
+    formData.append("audio", audioFile as Blob)
 
     startTransition(async () => {
       try {
         const response = await fetch("http://localhost:8000/predict/audio", {
           method: "POST",
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Cache-Control": "no-store",
-          },
           body: formData,
         })
 
@@ -95,6 +95,12 @@ export default function AudioClassification() {
       }
     })
   }
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setAudioFile(event.target.files[0]);
+    }
+  };
 
   const togglePlayPause = () => {
     if (audioRef.current) {
@@ -142,6 +148,7 @@ export default function AudioClassification() {
             id="audio"
             name="audio"
             accept="audio/wav"
+            onChange={handleFileChange}
             className="p-1 file:me-3 file:h-full file:cursor-pointer file:rounded file:bg-secondary file:px-2"
             required
           />
@@ -166,11 +173,11 @@ export default function AudioClassification() {
             ) : (
               <>
                 <div className="flex flex-col leading-tight">
-                  <div className="font-medium text-zinc-700">
-                    {prediction.classes}
-                  </div>
-                  <p className="text-xs text-zinc-400">
-                    Diprediksi sebagai suara {prediction.classes}
+                  <p className="text-xs text-muted-foreground">
+                    Diprediksi sebagai suara 
+		    <span className="text-primary ms-1">
+		      {prediction.classes}
+		    </span>
                   </p>
                 </div>
                 <audio
@@ -181,7 +188,7 @@ export default function AudioClassification() {
                   size="sm"
                   variant="secondary"
                   onClick={togglePlayPause}
-                  className="ms-auto h-8 rounded-full text-xs text-zinc-600"
+                  className="ms-auto h-8 rounded-full text-xs text-primary"
                 >
                   {isPlay ? "Playing..." : "Play audio"}
                 </Button>

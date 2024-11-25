@@ -1,22 +1,20 @@
 {
-  "name": "text-sentiment",
+  "name": "deep-learning-team1",
   "description": "Deep learning text sentiment analysis",
   "version": "1.0.0",
-  "license": "MIT",
-  "scripts": {
-    "dev": "concurrently \"npm run dev:next\" \"npm run dev:py\"",
-    "dev:next": "cd web && npm run dev",
-    "dev:py": "cd deep_learning && python app.py",
-    "venv": "cd deep_learning && venv/Scripts/activate",
-    "format": "cd web && npm run format"
-  },
   "keywords": [
     "deep-learning",
     "text-sentiment",
     "sentiment-analysis",
-    "classification",
-    "nextjs"
+    "classification"
   ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:next\" \"npm run dev:py\"",
+    "dev:next": "cd web && npm run dev",
+    "dev:py": "cd deep_learning && python app.py",
+    "format": "cd web && npm run format",
+    "venv": "cd deep_learning && venv/Scripts/activate"
+  },
   "devDependencies": {
     "concurrently": "^9.1.0"
   }
