@@ -65,9 +65,7 @@ export default function AudioClassification() {
           body: formData,
         })
         const result = await response.json()
-        console.log("result", result)
 
-        addAudioToPlayer(audio)
         setStatus("success")
         setPrediction({
           classes: result.prediction,
@@ -78,7 +76,7 @@ export default function AudioClassification() {
         console.error("Error:", error)
       }
 
-      console.log(prediction?.classes, prediction?.accuracy)
+      addAudioToPlayer(audio)
     })
   }
 
@@ -177,40 +175,41 @@ export default function AudioClassification() {
             {isPending ? (
               <LoadingCard />
             ) : (
-              prediction &&
-              audioSrc && (
-                <>
-                  {!prediction.classes || status === "failed" ? (
-                    <div className="flex items-center gap-3">
-                      <CircleAlertIcon className="size-4 text-muted-foreground" />
-                      <span className="text-sm text-primary">
-                        Failed to predict
+              <>
+                {!prediction?.classes || status === "failed" ? (
+                  <div className="flex items-center gap-3">
+                    <CircleAlertIcon className="size-4 text-muted-foreground" />
+                    <span className="text-sm text-primary">
+                      Failed to predict
+                    </span>
+                  </div>
+                ) : (
+                  <div className="flex flex-col leading-tight">
+                    <p className="text-xs text-muted-foreground">
+                      Diprediksi sebagai suara
+                      <span className="ms-1 text-primary">
+                        {prediction.classes}
                       </span>
-                    </div>
-                  ) : (
-                    <div className="flex flex-col leading-tight">
-                      <p className="text-xs text-muted-foreground">
-                        Diprediksi sebagai suara
-                        <span className="ms-1 text-primary">
-                          {prediction.classes}
-                        </span>
-                      </p>
-                    </div>
-                  )}
-                  <audio
-                    ref={audioRef}
-                    src={audioSrc.file}
-                  ></audio>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={togglePlayPause}
-                    className="ms-auto h-8 rounded-full text-xs text-primary"
-                  >
-                    {isPlay ? "Playing..." : "Play audio"}
-                  </Button>
-                </>
-              )
+                    </p>
+                  </div>
+                )}
+                {audioSrc && (
+                  <>
+                    <audio
+                      ref={audioRef}
+                      src={audioSrc.file}
+                    ></audio>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={togglePlayPause}
+                      className="ms-auto h-8 rounded-full text-xs text-primary"
+                    >
+                      {isPlay ? "Playing..." : "Play audio"}
+                    </Button>
+                  </>
+                )}
+              </>
             )}
           </div>
         </div>
