@@ -1,18 +1,30 @@
 {
-  "name": "deep-learning-team1",
-  "description": "Deep learning text sentiment analysis",
+  "name": "deep-learning",
+  "description": "Deep learning project",
   "version": "1.0.0",
+  "license": "MIT",
   "keywords": [
     "deep-learning",
     "text-sentiment",
     "sentiment-analysis",
     "classification"
   ],
+  "bugs": "https://github.com/hibatillah/deep-learning/issues",
+  "repository": {
+    "url": "https://github.com/hibatillah/deep-learning",
+    "type": "git"
+  },
+  "author": {
+    "name": "hibatillah",
+    "url": "https://github.com/hibatillah"
+  },
+  "packageManager": "npm@10.9.0",
+  "workspaces": ["web"],
   "scripts": {
     "dev": "concurrently \"npm run dev:next\" \"npm run dev:py\"",
-    "dev:next": "cd web && npm run dev",
+    "dev:next": "npm run dev --workspace=web",
     "dev:py": "cd deep_learning && python app.py",
-    "format": "cd web && npm run format",
+    "format": "npm run format --workspace=web",
     "venv": "cd deep_learning && venv/Scripts/activate"
   },
   "devDependencies": {

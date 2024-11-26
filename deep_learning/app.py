@@ -115,7 +115,7 @@ def audio():
     if request.method == "GET":
         return """
             <p>
-                Post json data with a key
+                Post files data with a key
                 <code style="background: lightgray;">audio</code>
                 to get the sentiment prediction.
             </p>"""

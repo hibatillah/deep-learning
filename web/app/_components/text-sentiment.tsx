@@ -76,11 +76,21 @@ export default function TextSentiment() {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-6">
       <form
         onSubmit={predict}
         className="flex w-full flex-col gap-3"
       >
+        <div className="block space-y-1">
+          <Label
+            className="text-muted-foreground"
+          >
+            Prediction
+          </Label>
+          <p className="text-primary text-sm">
+            IMDB movie review sentiment analysis.
+          </p>
+        </div>
         <div className="block space-y-1">
           <Label
             htmlFor="review"
@@ -108,7 +118,7 @@ export default function TextSentiment() {
         </Button>
       </form>
       {status !== "idle" && (
-        <div className="space-y-8">
+        <>
           <Separator />
           <div className="flex w-full items-center gap-4 overflow-hidden rounded-lg border border-border p-4">
             {isPending ? (
@@ -121,7 +131,7 @@ export default function TextSentiment() {
                     className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 scale-[.6]"
                   />
                 </div>
-                <div className="flex-auto space-y-2 [&_label]:text-xs [&_label]:text-muted-foreground [&_p]:font-medium [&_p]:text-primary">
+                <div className="flex-auto space-y-2 [&_label]:text-xs [&_label]:text-muted-foreground [&_p]:font-light [&_p]:text-primary">
                   <div className="flex flex-col leading-tight">
                     <label>Sentiment</label>
                     <p>{prediction.sentiment}</p>
@@ -139,8 +149,8 @@ export default function TextSentiment() {
               </div>
             )}
           </div>
-        </div>
+        </>
       )}
-    </>
+    </div>
   )
 }

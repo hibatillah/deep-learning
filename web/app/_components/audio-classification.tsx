@@ -132,11 +132,21 @@ export default function AudioClassification() {
   }, [audioRef.current])
 
   return (
-    <>
+    <div className="flex flex-col gap-6">
       <form
         onSubmit={predict}
         className="flex w-full flex-col gap-3"
       >
+        <div className="block space-y-1">
+          <Label
+            className="text-muted-foreground"
+          >
+            Prediction
+          </Label>
+          <p className="text-primary text-sm">
+            Audio classification of AK12, M16, and M249 weapons.
+          </p>
+        </div>
         <div className="block space-y-1">
           <Label
             htmlFor="audio"
@@ -169,7 +179,7 @@ export default function AudioClassification() {
         </Button>
       </form>
       {status !== "idle" && (
-        <div className="space-y-8">
+        <>
           <Separator />
           <div className="flex w-full items-center gap-4 overflow-hidden rounded-lg border border-border p-4">
             {isPending ? (
@@ -212,8 +222,8 @@ export default function AudioClassification() {
               </>
             )}
           </div>
-        </div>
+        </>
       )}
-    </>
+    </div>
   )
 }

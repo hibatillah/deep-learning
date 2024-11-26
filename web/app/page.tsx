@@ -21,7 +21,7 @@ export default function Home() {
         </div>
         <Tabs
           defaultValue="text"
-          className="flex w-full flex-col gap-4 md:w-96"
+          className="flex w-full flex-col gap-3 md:w-96"
         >
           <div className="flex items-center gap-2">
             <TabsList className="flex h-10 flex-auto *:flex-auto">
@@ -31,10 +31,10 @@ export default function Home() {
             <ThemeToggle />
           </div>
           <Separator />
-          <TabsContent value="text">
+          <TabsContent value="text" tabIndex={-1}>
             <TextSentiment />
           </TabsContent>
-          <TabsContent value="audio">
+          <TabsContent value="audio" tabIndex={-1}>
             <AudioClassification />
           </TabsContent>
         </Tabs>
