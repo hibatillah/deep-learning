@@ -9,12 +9,15 @@ import { Button, buttonVariants } from "@/components/ui/button"
 import { Moon, Sun } from "lucide-react"
 
 type Size = NonNullable<Parameters<typeof buttonVariants>[0]>["size"]
+type Variant = NonNullable<Parameters<typeof buttonVariants>[0]>["variant"]
 
 export function ThemeToggle({
-  size,
+  size = "icon",
+  variant = "secondary",
   className,
 }: {
   size?: Size
+  variant?: Variant
   className?: string
 }) {
   const { theme, setTheme } = useTheme()
@@ -22,7 +25,7 @@ export function ThemeToggle({
   return (
     <Button
       size={size}
-      variant="secondary"
+      variant={variant}
       onClick={() => (theme === "dark" ? setTheme("light") : setTheme("dark"))}
       className={className}
     >
