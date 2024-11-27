@@ -82,12 +82,8 @@ export default function TextSentiment() {
         className="flex w-full flex-col gap-3"
       >
         <div className="block space-y-1">
-          <Label
-            className="text-muted-foreground"
-          >
-            Prediction
-          </Label>
-          <p className="text-primary text-sm">
+          <Label className="text-muted-foreground">Prediction</Label>
+          <p className="text-sm text-primary">
             IMDB movie review sentiment analysis.
           </p>
         </div>
