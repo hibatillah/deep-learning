@@ -1,6 +1,6 @@
-## Text Sentiment Analysis
+## Deep Learning Project
 
-Deep Learning project using text sentiment analysis.
+Deep Learning project for text sentiment analysis and audio classifications.
 
 ### Tech Stack
 - Deep learning project using Flask `v3.1.0`
@@ -45,15 +45,14 @@ npm install
 
 5. Run project
 
-> Use all commands to run in the project `root`.
+> Use all commands to run in the project `root`. <br>
+> Next command will run `web` and `deep_learning` project concurrently.
 
 ```bash
-# ./
 npm run dev
 ```
 
-> This command will run `web` and `deep_learning` project concurrently. <br>
-> Run project separately using next command.
+> You can run project separately using next command.
 
 ```bash
 # for web
@@ -63,7 +62,7 @@ npm run dev:next
 npm run dev:py
 ```
 
-> [!IMPORTANT] <br>
+> [!IMPORTANT]
 > Make sure to activate `venv` before running the project, specifically for `deep_learning` project.
 
 6. Open `web` project at [localhost:3000](http://localhost:3000) and `deep_learning` project at [localhost:8000](http://localhost:8000)

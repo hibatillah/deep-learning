@@ -74,11 +74,18 @@ CORS(app)
 @app.route("/")
 def home():
     return """
-        <h3>Text Sentiment Analysis API</h3>
+        <h3>Deep Learning Project API</h3>
         <p>
-            Use <code style="background: lightgray;">/predict</code>
-            endpoint for predictions.
-        </p>"""
+            Use the following endpoints for prediction.
+        </p>
+        <ul>
+            <li>
+                <code style="background: lightgray;">/predict/text</code> for sentiment analysis.
+            </li>
+            <li>
+                <code style="background: lightgray;">/predict/audio</code> for audio classification.
+            </li>
+        </ul>"""
 
 
 @app.route("/predict/text", methods=["GET", "POST"])
@@ -117,7 +124,7 @@ def audio():
             <p>
                 Post files data with a key
                 <code style="background: lightgray;">audio</code>
-                to get the sentiment prediction.
+                to get the classification prediction.
             </p>"""
 
     if request.method == "POST":
