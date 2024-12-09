@@ -58,14 +58,13 @@ export default function AudioClassification() {
     const formData = new FormData()
     formData.append("audio", audioFile as Blob)
 
-    startTransition(async () => {
+    const fetchPrediction = async () => {
       try {
         const response = await fetch("http://localhost:8000/predict/audio", {
           method: "POST",
           body: formData,
         })
         const result = await response.json()
-
         setStatus("success")
         setPrediction({
           classes: result.prediction,
@@ -75,7 +74,10 @@ export default function AudioClassification() {
         setStatus("failed")
         console.error("Error:", error)
       }
-
+    }
+    
+    startTransition(() => {
+      fetchPrediction()
       addAudioToPlayer(audio)
     })
   }
