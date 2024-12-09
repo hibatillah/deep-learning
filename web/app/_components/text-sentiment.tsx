@@ -74,7 +74,7 @@ export default function TextSentiment() {
       }
     }
 
-    startTransition(fetchPrediction)
+    startTransition(() => fetchPrediction())
   }
 
   return (
