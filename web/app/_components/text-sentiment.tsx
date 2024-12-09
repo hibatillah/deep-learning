@@ -49,7 +49,7 @@ export default function TextSentiment() {
       review: formData.get("review"),
     }
 
-    startTransition(async () => {
+    const fetchPrediction = async () => {
       try {
         const response = await fetch("http://localhost:8000/predict/text", {
           method: "POST",
@@ -72,7 +72,9 @@ export default function TextSentiment() {
         setStatus("failed")
         console.error("Error:", error)
       }
-    })
+    }
+
+    startTransition(fetchPrediction)
   }
 
   return (
