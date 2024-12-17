@@ -12,6 +12,12 @@ const config: Config = {
       center: true,
     },
     extend: {
+      fontFamily: {
+        inter: ["var(--font-inter)"],
+        'open-sans': ["var(--font-open-sans)"],
+        'roboto-mono': ["var(--font-roboto-mono)"],
+        'syne': ["var(--font-syne)"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

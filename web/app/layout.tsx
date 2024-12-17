@@ -1,14 +1,10 @@
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 
-import { ThemeProvider } from "@/components/theme/theme-provider"
+import { TooltipProvider } from "@/components/ui/tooltip"
+
+import fonts from "@/app/fonts"
 
 import "./globals.css"
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-})
 
 export const metadata: Metadata = {
   title: "Deep Learning",
@@ -27,15 +23,9 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className={`${inter.className} antialiased selection:bg-teal-100 selection:text-teal-800 dark:selection:bg-teal-700 dark:selection:text-teal-200`}
+        className={`${fonts.inter} ${fonts.openSans} ${fonts.robotoMono} ${fonts.syne} font-inter antialiased selection:bg-indigo-100 selection:text-indigo-800`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <TooltipProvider>{children}</TooltipProvider>
       </body>
     </html>
   )
