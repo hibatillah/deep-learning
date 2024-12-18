@@ -4,9 +4,9 @@ import Image from "next/image"
 import Link from "next/link"
 
 import Ellipse2 from "@/assets/decorations/Ellipse2.svg"
-import Vector1 from "@/assets/decorations/vector1.svg"
-import Vector2 from "@/assets/decorations/vector2.svg"
-import Vector3 from "@/assets/decorations/vector3.svg"
+import Vector1 from "@/assets/decorations/Vector1.svg"
+import Vector2 from "@/assets/decorations/Vector2.svg"
+import Vector3 from "@/assets/decorations/Vector3.svg"
 
 import Author from "@/components/custom/author"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -132,7 +132,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 px-4 *:aspect-[4/3] *:rounded-xl md:grid-cols-2 lg:gap-12 lg:px-20 md:*:aspect-square">
+      <div className="grid grid-cols-1 gap-4 px-4 *:aspect-[4/3] *:rounded-xl md:grid-cols-2 md:*:aspect-square lg:gap-12 lg:px-20">
         <div className="bg-orange-100"></div>
         <div className="bg-green-100"></div>
       </div>

@@ -14,9 +14,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         inter: ["var(--font-inter)"],
-        'open-sans': ["var(--font-open-sans)"],
-        'roboto-mono': ["var(--font-roboto-mono)"],
-        'syne': ["var(--font-syne)"],
+        syne: ["var(--font-syne)"],
+        "open-sans": ["var(--font-open-sans)"],
       },
       colors: {
         background: "hsl(var(--background))",

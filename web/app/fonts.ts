@@ -1,4 +1,11 @@
-import { Bricolage_Grotesque, Hanken_Grotesk, Inter, Open_Sans, Roboto_Mono, Syne } from "next/font/google"
+import {
+  Bricolage_Grotesque,
+  Hanken_Grotesk,
+  Inter,
+  Open_Sans,
+  Roboto_Mono,
+  Syne,
+} from "next/font/google"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,12 +19,6 @@ const openSans = Open_Sans({
   variable: "--font-open-sans",
 })
 
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto-mono",
-})
-
 const syne = Syne({
   subsets: ["latin"],
   display: "swap",
@@ -27,7 +28,6 @@ const syne = Syne({
 const fonts = {
   inter: inter.variable,
   openSans: openSans.variable,
-  robotoMono: robotoMono.variable,
   syne: syne.variable,
 }
 

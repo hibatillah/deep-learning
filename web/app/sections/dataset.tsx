@@ -1,7 +1,7 @@
 import Image from "next/image"
 
 import Ellipse1 from "@/assets/decorations/Ellipse1.svg"
-import Vector3 from "@/assets/decorations/vector3.svg"
+import Vector3 from "@/assets/decorations/Vector3.svg"
 
 import { Button } from "@/components/ui/button"
 
@@ -49,13 +49,13 @@ export default function Dataset() {
         <Image
           src={Ellipse1}
           alt=""
-          className="absolute end-4 md:end-24 lg:end-24 -top-14 w-12 rotate-[60deg]"
+          className="absolute -top-14 end-4 w-12 rotate-[60deg] md:end-24 lg:end-24"
           aria-hidden="true"
         />
         <Image
           src={Vector3}
           alt=""
-          className="absolute -start-12 md:start-12 lg:-start-16 top-10 lg:-top-8 w-12 lg:end-8"
+          className="absolute -start-12 top-10 w-12 md:start-12 lg:-start-16 lg:-top-8 lg:end-8"
           aria-hidden="true"
         />
       </div>
