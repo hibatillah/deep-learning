@@ -1,11 +1,26 @@
+const featured = [
+  {
+    title: "3",
+    description: "label audio",
+  },
+  {
+    title: "1000+",
+    description: "data audio",
+  },
+  {
+    title: "± 70%",
+    description: "akurasi model",
+  },
+]
+
 export default function DeepLearning() {
   return (
     <section
       id="deep-learning"
-      className="container grid scroll-mt-12 grid-cols-2 items-center gap-12 p-20 *:aspect-[4/3]"
+      className="container grid scroll-mt-12 grid-cols-1 items-center gap-4 px-4 py-10 lg:px-20 xl:grid-cols-2 xl:gap-12"
     >
-      <div className="rounded-xl bg-indigo-100"></div>
-      <div className="flex flex-col gap-3 py-2">
+      <div className="order-2 aspect-[4/3] rounded-xl bg-indigo-100 xl:order-1"></div>
+      <div className="order-1 xl:aspect-[4/3] flex flex-col gap-3 py-3 xl:order-2">
         <h2 className="text-pretty font-open-sans text-3xl/snug font-bold tracking-tighter text-zinc-800">
           Model Deep Learning dengan Dataset Terbaik
         </h2>
@@ -15,19 +30,13 @@ export default function DeepLearning() {
           accusantium amet veritatis voluptas harum excepturi consequuntur
           aliquid? Ut, dolores.
         </p>
-        <div className="mt-auto grid grid-cols-3 gap-4 *:flex *:aspect-[4/3] *:flex-col *:items-center *:justify-center *:gap-1 *:rounded-lg *:border *:border-zinc-100 *:bg-zinc-50 *:p-5 [&_h3]:text-2xl [&_h3]:font-bold [&_h3]:text-zinc-800 [&_p]:font-medium [&_p]:text-zinc-400">
-          <div>
-            <h3>3</h3>
-            <p>label audio</p>
-          </div>
-          <div>
-            <h3>1000+</h3>
-            <p>data audio</p>
-          </div>
-          <div>
-            <h3>± 70%</h3>
-            <p>akurasi model</p>
-          </div>
+        <div className="mt-6 grid grid-cols-1 content-stretch gap-3 lg:mt-auto lg:grid-cols-3 lg:gap-6">
+          {featured.map((item) => (
+            <div className="flex items-center gap-4 rounded-lg border border-zinc-100 bg-zinc-50 p-5 xl:aspect-[4/3] lg:flex-col lg:justify-center lg:gap-1">
+              <h3 className="text-2xl font-bold text-zinc-800">{item.title}</h3>
+              <p className="text-zinc-400">{item.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

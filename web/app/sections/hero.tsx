@@ -1,6 +1,12 @@
 import React from "react"
 
+import Image from "next/image"
 import Link from "next/link"
+
+import Ellipse2 from "@/assets/decorations/Ellipse2.svg"
+import Vector1 from "@/assets/decorations/vector1.svg"
+import Vector2 from "@/assets/decorations/vector2.svg"
+import Vector3 from "@/assets/decorations/vector3.svg"
 
 import Author from "@/components/custom/author"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -16,11 +22,11 @@ export default function Hero() {
       <header className="flex items-center justify-between gap-4">
         <Link
           href="/"
-          className="font-syne text-sm font-semibold text-indigo-500 hover:text-indigo-400"
+          className="hidden font-syne text-sm font-semibold text-indigo-500 hover:text-indigo-400 md:block"
         >
           Batu Karang
         </Link>
-        <nav className="flex items-center gap-4 *:font-open-sans *:text-sm *:font-semibold *:tracking-tight *:text-zinc-400 data-[active=true]:*:text-zinc-800">
+        <nav className="flex items-center gap-2 font-medium *:font-open-sans *:text-sm *:tracking-tight *:text-zinc-400 data-[active=true]:*:text-zinc-800 md:gap-4 md:*:font-semibold">
           <Link
             href="#dataset"
             data-active="true"
@@ -71,7 +77,7 @@ export default function Hero() {
         </div>
       </header>
 
-      <div className="mb-20 mt-32 flex flex-col items-center text-center">
+      <div className="relative mx-auto mb-20 mt-32 flex max-w-max flex-col items-center text-center">
         <h1 className="text-pretty font-open-sans text-5xl/snug font-bold tracking-tighter text-zinc-800">
           Lestarikan Harmoni Automasi Klasifikasi
         </h1>
@@ -99,9 +105,34 @@ export default function Hero() {
             </Button>
           </Link>
         </div>
+
+        <Image
+          src={Vector1}
+          alt=""
+          className="absolute -end-10 bottom-16 w-32 origin-bottom-left -rotate-12 lg:end-8"
+          aria-hidden="true"
+        />
+        <Image
+          src={Ellipse2}
+          alt=""
+          className="absolute bottom-10 start-0 w-10 origin-bottom-left -rotate-12 lg:start-28"
+          aria-hidden="true"
+        />
+        <Image
+          src={Vector3}
+          alt=""
+          className="absolute -start-20 bottom-24 w-10 origin-bottom-left -rotate-12"
+          aria-hidden="true"
+        />
+        <Image
+          src={Vector2}
+          alt=""
+          className="absolute -top-10 end-64 w-10 origin-bottom-left -rotate-45"
+          aria-hidden="true"
+        />
       </div>
 
-      <div className="grid grid-cols-2 gap-12 px-20 *:aspect-square *:rounded-xl">
+      <div className="grid grid-cols-1 gap-4 px-4 *:aspect-[4/3] *:rounded-xl md:grid-cols-2 lg:gap-12 lg:px-20 md:*:aspect-square">
         <div className="bg-orange-100"></div>
         <div className="bg-green-100"></div>
       </div>

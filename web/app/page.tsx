@@ -6,7 +6,7 @@ import Dataset from "./sections/dataset"
 
 export default function Home() {
   return (
-    <div className="min-h-dvh w-full space-y-20">
+    <div className="min-h-dvh w-full space-y-20 overflow-hidden">
       <Hero />
       <Dataset />
       <DeepLearning />
