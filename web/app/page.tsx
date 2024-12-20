@@ -11,8 +11,8 @@ export default function Home() {
       <Hero />
       <Dataset />
       <DeepLearning />
-      <div className="mx-auto w-1/2">
-        <AudioClassification />
+      <div className="mx-auto w-1/2 p-8 h-dvh">
+        {/* <AudioClassification /> */}
       </div>
     </div>
   )

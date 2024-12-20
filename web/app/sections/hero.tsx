@@ -7,7 +7,7 @@ import Ellipse2 from "@/assets/decorations/Ellipse2.svg"
 import Vector1 from "@/assets/decorations/Vector1.svg"
 import Vector2 from "@/assets/decorations/Vector2.svg"
 import Vector3 from "@/assets/decorations/Vector3.svg"
-import Desy from "@/assets/images/desy.jpg"
+import Desy from "@/assets/images/Desy.jpg"
 
 import Author from "@/components/custom/author"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
