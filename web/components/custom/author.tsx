@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tooltip"
 
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import { StaticImageData } from "next/image"
 
 export default function Author({
   img,
@@ -29,7 +30,7 @@ export default function Author({
       <Tooltip>
         <TooltipTrigger asChild>
           <Avatar className={cn("size-8", className)}>
-            <AvatarImage src={img} />
+            <AvatarImage src={img} className="object-cover" />
             <AvatarFallback>{fallback}</AvatarFallback>
           </Avatar>
         </TooltipTrigger>

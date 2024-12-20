@@ -18,30 +18,12 @@ sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding="utf-8")
 os.environ["PYTHONIOENCODING"] = "utf-8"
 
 # Load the models
-audio_model = load_model("model/gun_audio_model.h5")
-text_model = load_model("model/imdb_sentiment_model.h5")
-
-# Load dependencies
-tokenizer = Tokenizer(num_words=10000)
-
-
-def predict_sentiment(review: str):
-    MIN_POSITIVE = 0.55
-
-    review = tokenizer.texts_to_sequences([review])
-    review = pad_sequences(review, maxlen=200)
-
-    prediction = text_model.predict(review)
-
-    sentiment = "Positive" if prediction[0] >= MIN_POSITIVE else "Negative"
-    score = float(prediction[0])
-
-    return sentiment, score
+audio_model = load_model("model/model_music_yaman.h5")
 
 
 def predict_audio(file_path):
     target_shape = (128, 128)
-    classes = ["AK12", "M16", "M249"]
+    classes = ["adeni", "hadrami", "lahji"]
 
     audio_data, sample_rate = librosa.load(file_path, sr=None)
     mel_spectrogram = librosa.feature.melspectrogram(y=audio_data, sr=sample_rate)
@@ -79,35 +61,6 @@ def home():
             Use <code style="background: lightgray;">/predict</code>
             endpoint for predictions.
         </p>"""
-
-
-@app.route("/predict/text", methods=["GET", "POST"])
-def text():
-    if request.method == "GET":
-        return """
-            <p>
-                Post json data with a key
-                <code style="background: lightgray;">review</code>
-                to get the sentiment prediction.
-            </p>"""
-
-    if request.method == "POST":
-        data = request.get_json()
-        review = data.get("review")
-
-        if not review:
-            return jsonify({"error": "Review is required"}), 400
-
-        try:
-            sentiment, score = predict_sentiment(review)
-            response = jsonify(
-                {"prediction": sentiment, "score": score, "review": review}
-            )
-            response.headers["Content-Type"] = "application/json; charset=utf-8"
-
-            return response
-        except Exception as e:
-            return jsonify({"error": str(e)}), 500
 
 
 @app.route("/predict/audio", methods=["GET", "POST"])

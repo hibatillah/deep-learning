@@ -8,7 +8,7 @@ const featured = [
     description: "data audio",
   },
   {
-    title: "± 70%",
+    title: "± 95%",
     description: "akurasi model",
   },
 ]

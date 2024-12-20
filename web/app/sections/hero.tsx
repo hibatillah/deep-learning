@@ -7,6 +7,7 @@ import Ellipse2 from "@/assets/decorations/Ellipse2.svg"
 import Vector1 from "@/assets/decorations/Vector1.svg"
 import Vector2 from "@/assets/decorations/Vector2.svg"
 import Vector3 from "@/assets/decorations/Vector3.svg"
+import Desy from "@/assets/images/desy.jpg"
 
 import Author from "@/components/custom/author"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
@@ -57,7 +58,7 @@ export default function Hero() {
         <div className="flex items-center gap-3">
           <div className="font-syne text-xs text-zinc-400">made by</div>
           <Author
-            img="https://github.com/hibatillah.png"
+            img={Desy.src}
             fallback="DE"
             content="@simangunsongdessy"
             link="https://www.instagram.com/simangunsongdessy"
@@ -65,8 +66,8 @@ export default function Hero() {
           <Author
             img="https://media.licdn.com/dms/image/v2/D4E03AQFXx7TyMz0I4A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1692578340795?e=1740009600&v=beta&t=ro6qEAVS7zYb7YbGKq1GUyJZqGK0exIsdmRtjXzESsU"
             fallback="MH"
-            content="@hibat.illah"
-            link="https://instagram.com/hibat.illah"
+            content="@hibatillahhabib"
+            link="https://linkedin.com/in/hibatillahhabib"
             className="-ms-5 ring-2 ring-white"
           />
           <Avatar className="-ms-5 size-8 ring-2 ring-white">
@@ -78,7 +79,7 @@ export default function Hero() {
       </header>
 
       <div className="relative mx-auto mb-20 mt-32 flex max-w-max flex-col items-center text-center">
-        <h1 className="text-pretty font-open-sans text-5xl/snug font-bold tracking-tighter text-zinc-800">
+        <h1 className="text-balance font-open-sans text-5xl/snug font-bold tracking-tighter text-zinc-800">
           Lestarikan Harmoni Automasi Klasifikasi
         </h1>
         <p className="text-pretty text-lg font-medium text-zinc-400">

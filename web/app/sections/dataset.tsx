@@ -1,16 +1,25 @@
+"use client"
+
+import React from "react"
+
 import Image from "next/image"
 
+import adeni from "@/assets/audio/adeni.wav"
+import hadrami from "@/assets/audio/hadrami.wav"
+import lahji from "@/assets/audio/lahji.wav"
 import Ellipse1 from "@/assets/decorations/Ellipse1.svg"
 import Vector3 from "@/assets/decorations/Vector3.svg"
 
+import { cn } from "@/lib/utils"
+
 import { Button } from "@/components/ui/button"
 
-import { PlayIcon } from "lucide-react"
+import { PauseIcon, PlayIcon } from "lucide-react"
 
 type Example = {
   name: string
   description: string
-  audio?: string | File
+  audio?: string
 }
 
 const example: Example[] = [
@@ -18,20 +27,57 @@ const example: Example[] = [
     name: "Adeni",
     description:
       "Musik yang berasal dari wilayah Aden dengan nuansa modern. Gaya musik ini dipengaruhi oleh musik internasional dan menggunakan instrumen modern dengan ritme yang lebih variatif dan dinamis.",
+    audio: adeni,
   },
   {
     name: "Hadrami",
     description:
       "Musik khas wilayah Hadhramaut yang memiliki karakter ritme tenang dan melodis. Sering kali digunakan dalam lagu-lagu pujian dan musik religi dengan instrumen tradisional khas Yaman.",
+    audio: hadrami,
   },
   {
     name: "Lahji",
     description:
       "Musik tradisional dari wilayah Lahj dengan gaya pedesaan. Ciri khasnya terletak pada penggunaan instrumen tradisional dan pola ritme sederhana yang merefleksikan budaya lokal.",
+    audio: lahji,
   },
 ]
 
 export default function Dataset() {
+  const [currentPlayingIndex, setCurrentPlayingIndex] = React.useState<
+    number | null
+  >(null)
+  const audioRefs = React.useRef<Array<HTMLAudioElement | null>>([])
+
+  const handlePlayAudio = (index: number) => {
+    const selectedAudio = audioRefs.current[index]
+
+    if (!selectedAudio) return
+
+    // If the clicked audio is already playing, pause it
+    if (currentPlayingIndex === index && !selectedAudio.paused) {
+      selectedAudio.pause()
+      setCurrentPlayingIndex(null)
+    } else {
+      // Pause all other audios before playing the selected one
+      audioRefs.current.forEach((audio, i) => {
+        if (audio && i !== index) {
+          audio.pause()
+        }
+      })
+
+      // Play the selected audio
+      selectedAudio.currentTime = 0 // Optional: Start from the beginning
+      selectedAudio.play()
+      setCurrentPlayingIndex(index) // Update the currently playing index
+    }
+
+    // Listen for when the audio ends to reset the state
+    selectedAudio.onended = () => {
+      setCurrentPlayingIndex(null)
+    }
+  }
+
   return (
     <section
       id="dataset"
@@ -78,13 +124,29 @@ export default function Dataset() {
               <p className="text-pretty text-sm/normal text-zinc-500">
                 {item.description}
               </p>
+              <audio
+                src={item.audio}
+                ref={(el) => {
+                  audioRefs.current[index] = el
+                }}
+              ></audio>
               <Button
                 size="sm"
-                variant="outline"
-                className="mt-5 rounded-full px-4 font-normal text-zinc-700"
+                variant={
+                  currentPlayingIndex === index ? "secondary" : "outline"
+                }
+                onClick={() => handlePlayAudio(index)}
+                className={cn(
+                  "mt-5 rounded-full px-4 font-normal text-zinc-700",
+                  currentPlayingIndex === index && "border border-border",
+                )}
               >
-                <PlayIcon className="size-5" />
-                Dengar {item.name}
+                {currentPlayingIndex === index ? (
+                  <PauseIcon className="size-5" />
+                ) : (
+                  <PlayIcon className="size-5" />
+                )}
+                {currentPlayingIndex === index ? "Pause" : "Dengar"} {item.name}
               </Button>
             </div>
           )
