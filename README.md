@@ -6,6 +6,12 @@ Deep Learning project for text sentiment analysis and audio classifications.
 - Deep learning project using Flask `v3.1.0`
 - Web project using Next.js `v14.2.17`
 
+## Project Structure
+
+- Python API is located at [`/deep_learning/app.py`](./deep_learning/app.py)
+- Python models for prediction are located at [`/deep_learning/model`](./deep_learning/model)
+- API interaction for predictions and their forms are located at [`/web/app/_components`](./web/app/_components)
+
 ## Development
 
 1. Clone this repository
