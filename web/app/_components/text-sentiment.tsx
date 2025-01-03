@@ -87,8 +87,8 @@ export default function TextSentiment() {
       >
         <div className="block space-y-1">
           <Label className="text-muted-foreground">Prediction</Label>
-          <p className="text-sm text-primary">
-            IMDB movie review sentiment analysis.
+          <p className="text-sm text-primary text-pretty">
+            IMDB movie review sentiment analysis
           </p>
         </div>
         <div className="block space-y-1">

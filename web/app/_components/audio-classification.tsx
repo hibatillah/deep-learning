@@ -75,7 +75,7 @@ export default function AudioClassification() {
         console.error("Error:", error)
       }
     }
-    
+
     startTransition(() => {
       fetchPrediction()
       addAudioToPlayer(audio)
@@ -146,7 +146,7 @@ export default function AudioClassification() {
             Prediction
           </Label>
           <p className="text-primary text-sm">
-            Audio classification of AK12, M16, and M249 weapons.
+            Audio classification of AK12, M16, and M249 guns
           </p>
         </div>
         <div className="block space-y-1">
@@ -163,7 +163,7 @@ export default function AudioClassification() {
             type="file"
             id="audio"
             name="audio"
-            accept="audio/wav"
+            accept=".wav"
             onChange={handleFileChange}
             className="p-1 file:me-3 file:h-full file:cursor-pointer file:rounded file:bg-secondary file:px-2"
             required
@@ -198,7 +198,7 @@ export default function AudioClassification() {
                 ) : (
                   <div className="flex flex-col leading-tight">
                     <p className="text-xs text-muted-foreground">
-                      Diprediksi sebagai suara
+                      Predicted as
                       <span className="ms-1 text-primary">
                         {prediction.classes}
                       </span>
