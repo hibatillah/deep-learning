@@ -1,10 +1,11 @@
 ## Deep Learning Project
 
-Deep Learning project for text sentiment analysis and audio classifications.
+Deep Learning project for **text sentiment analysis**, **audio and image classifications**
 
 ### Tech Stack
 - Deep learning project using Flask `v3.1.0`
 - Web project using Next.js `v14.2.17`
+- Python `v3.12`
 
 ## Project Structure
 
@@ -12,63 +13,58 @@ Deep Learning project for text sentiment analysis and audio classifications.
 - Python models for prediction are located at [`/deep_learning/model`](./deep_learning/model)
 - API interaction for predictions and their forms are located at [`/web/app/_components`](./web/app/_components)
 
-## Development
+## Installation
 
-1. Clone this repository
+### Create python venv
 
-```bash
-git clone https://github.com/hibatillah/deep-learning
-```
-
-2. Create virtual environment for python
+1. Create venv
 
 ```bash
-# ./deep_learning
+cd deep_learning
 python -m venv venv
 ```
 
-3. Activate virtual environment (venv)
+2. Activate venv
 
 ```bash
-# ./deep_learning
-venv\Scripts\activate
+venv/Scripts/activate
 ```
+> Make sure to activate venv inside `deep_learning` directory
 
-> venv active based on session.
+### Install Depedencies
 
-4. Install Depedencies
-
-```bash
-# ./deep_learning
-pip install -r requirements.txt
-```
+1. Install web depedencies
 
 ```bash
-# ./
-# ./web
+cd web
 npm install
 ```
 
-5. Run project
+2. Install deep_learning depedencies
 
-> Use all commands to run in the project `root`. <br>
-> Next command will run `web` and `deep_learning` project concurrently.
+```bash
+cd deep_learning
+venv/Scripts/activate  # activate venv
+pip install -r requirements.txt
+```
+
+### Running Project
+
+1. Run deep_learning project
+
+```bash
+npm run dev:py
+```
+
+2. Run web project
+
+```bash
+npm run dev:next
+```
+
+3. Run project concurrently
 
 ```bash
 npm run dev
 ```
-
-> You can run project separately using next command.
-
-```bash
-# for web
-npm run dev:next
-
-# for deep_learning
-npm run dev:py
-```
-
-> [!IMPORTANT]
-> Make sure to activate `venv` before running the project, specifically for `deep_learning` project.
-
-6. Open `web` project at [localhost:3000](http://localhost:3000) and `deep_learning` project at [localhost:8000](http://localhost:8000)
+> Make sure to activate venv before running `deep_learning` project

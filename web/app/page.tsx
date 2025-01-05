@@ -14,10 +14,13 @@ export default function Home() {
   return (
     <div className="flex h-dvh flex-col items-center p-4">
       <div className="mt-[20dvh] flex w-full max-w-[500px] flex-col gap-5 lg:w-1/3 xl:w-[30%] 2xl:w-1/4">
-        <div className="space-y-1">
+        <div className="text-pretty">
           <h1 className="text-xl font-semibold text-primary">Deep Learning</h1>
-          <p className="text-pretty text-muted-foreground">
+          <p className="text-muted-foreground">
             Sentiment Analysis and Classifications
+          </p>
+          <p className="mt-1.5 text-xs text-zinc-600 dark:text-zinc-300">
+            Deep Learning api isn't hosted yet, run locally
           </p>
         </div>
         <Tabs

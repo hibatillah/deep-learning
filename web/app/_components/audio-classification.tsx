@@ -140,12 +140,8 @@ export default function AudioClassification() {
         className="flex w-full flex-col gap-3"
       >
         <div className="block space-y-1">
-          <Label
-            className="text-muted-foreground"
-          >
-            Prediction
-          </Label>
-          <p className="text-primary text-sm">
+          <Label className="text-muted-foreground">Prediction</Label>
+          <p className="text-sm text-primary">
             Audio classification of AK12, M16, and M249 guns
           </p>
         </div>
@@ -180,51 +176,49 @@ export default function AudioClassification() {
           )}
         </Button>
       </form>
-      {status !== "idle" && (
-        <>
-          <Separator />
-          <div className="flex w-full items-center gap-4 overflow-hidden rounded-lg border border-border p-4">
-            {isPending ? (
-              <LoadingCard />
-            ) : (
-              <>
-                {!prediction?.classes || status === "failed" ? (
-                  <div className="flex items-center gap-3">
-                    <CircleAlertIcon className="size-4 text-muted-foreground" />
-                    <span className="text-sm text-primary">
-                      Failed to predict
+      {isPending ? (
+        <LoadingCard />
+      ) : (
+        status !== "idle" && (
+          <>
+            <Separator />
+            <div className="flex w-full items-center gap-4 overflow-hidden rounded-lg border border-border p-4">
+              {!prediction?.classes || status === "failed" ? (
+                <div className="flex items-center gap-3">
+                  <CircleAlertIcon className="size-4 text-muted-foreground" />
+                  <span className="text-sm text-primary">
+                    Failed to predict
+                  </span>
+                </div>
+              ) : (
+                <div className="flex flex-col leading-tight">
+                  <p className="text-xs text-muted-foreground">
+                    Predicted as
+                    <span className="ms-1 text-primary">
+                      {prediction.classes}
                     </span>
-                  </div>
-                ) : (
-                  <div className="flex flex-col leading-tight">
-                    <p className="text-xs text-muted-foreground">
-                      Predicted as
-                      <span className="ms-1 text-primary">
-                        {prediction.classes}
-                      </span>
-                    </p>
-                  </div>
-                )}
-                {audioSrc && (
-                  <>
-                    <audio
-                      ref={audioRef}
-                      src={audioSrc.file}
-                    ></audio>
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      onClick={togglePlayPause}
-                      className="ms-auto h-8 rounded-full text-xs text-primary"
-                    >
-                      {isPlay ? "Playing..." : "Play audio"}
-                    </Button>
-                  </>
-                )}
-              </>
-            )}
-          </div>
-        </>
+                  </p>
+                </div>
+              )}
+              {audioSrc && (
+                <>
+                  <audio
+                    ref={audioRef}
+                    src={audioSrc.file}
+                  ></audio>
+                  <Button
+                    size="sm"
+                    variant="secondary"
+                    onClick={togglePlayPause}
+                    className="ms-auto h-8 rounded-full text-xs text-primary"
+                  >
+                    {isPlay ? "Playing..." : "Play audio"}
+                  </Button>
+                </>
+              )}
+            </div>
+          </>
+        )
       )}
     </div>
   )

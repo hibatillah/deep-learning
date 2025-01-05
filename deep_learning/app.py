@@ -140,8 +140,8 @@ def text():
                 {"prediction": sentiment, "score": score, "review": review}
             )
             response.headers["Content-Type"] = "application/json; charset=utf-8"
-
             return response
+        
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
@@ -166,6 +166,7 @@ def audio():
             predicted_class, accuracy = predict_audio(audio)
             response = jsonify({"prediction": predicted_class, "accuracy": accuracy})
             return response
+
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 
@@ -202,7 +203,7 @@ def image():
 
         except Exception as e:
             import traceback
-            print(traceback.format_exc()) 
+            print(traceback.format_exc())
             return jsonify({"error": "Internal Server Error", "details": str(e)}), 500
 
 
