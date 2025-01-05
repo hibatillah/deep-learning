@@ -4,6 +4,7 @@ import AudioClassification from "./_components/audio-classification"
 import Dataset from "./sections/dataset"
 import DeepLearning from "./sections/deep-learning"
 import Hero from "./sections/hero"
+import Classification from "./sections/classification"
 
 export default function Home() {
   return (
@@ -11,9 +12,7 @@ export default function Home() {
       <Hero />
       <Dataset />
       <DeepLearning />
-      <div className="mx-auto w-1/2 p-8 h-dvh">
-        {/* <AudioClassification /> */}
-      </div>
+      <Classification />
     </div>
   )
 }

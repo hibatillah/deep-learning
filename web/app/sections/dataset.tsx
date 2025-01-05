@@ -54,25 +54,21 @@ export default function Dataset() {
 
     if (!selectedAudio) return
 
-    // If the clicked audio is already playing, pause it
     if (currentPlayingIndex === index && !selectedAudio.paused) {
       selectedAudio.pause()
       setCurrentPlayingIndex(null)
     } else {
-      // Pause all other audios before playing the selected one
       audioRefs.current.forEach((audio, i) => {
         if (audio && i !== index) {
           audio.pause()
         }
       })
 
-      // Play the selected audio
-      selectedAudio.currentTime = 0 // Optional: Start from the beginning
+      selectedAudio.currentTime = 0
       selectedAudio.play()
-      setCurrentPlayingIndex(index) // Update the currently playing index
+      setCurrentPlayingIndex(index)
     }
 
-    // Listen for when the audio ends to reset the state
     selectedAudio.onended = () => {
       setCurrentPlayingIndex(null)
     }

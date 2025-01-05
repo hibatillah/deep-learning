@@ -17,7 +17,7 @@ export default function DeepLearning() {
   return (
     <section
       id="deep-learning"
-      className="container grid scroll-mt-12 grid-cols-1 items-center gap-4 px-4 py-10 lg:px-20 xl:grid-cols-2 xl:gap-12"
+      className="container grid scroll-mt-24 grid-cols-1 items-center gap-4 px-4 py-10 lg:px-20 xl:grid-cols-2 xl:gap-12"
     >
       <div className="order-2 aspect-[4/3] rounded-xl bg-indigo-100 xl:order-1"></div>
       <div className="order-1 flex flex-col gap-3 py-3 xl:order-2 xl:aspect-[4/3]">

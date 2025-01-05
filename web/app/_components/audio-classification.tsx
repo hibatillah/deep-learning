@@ -15,25 +15,18 @@ import { CircleAlertIcon, LoaderCircleIcon } from "lucide-react"
 function LoadingCard() {
   return (
     <>
-      <Skeleton className="size-28 flex-none rounded-full" />
-      <div className="space-y-4">
-        <div className="space-y-1.5">
-          <Skeleton className="h-3 w-16" />
-          <Skeleton className="h-4 w-24" />
-        </div>
-        <div className="space-y-1.5">
-          <Skeleton className="h-3 w-16" />
-          <Skeleton className="h-4 w-52" />
-          <Skeleton className="h-4 w-36" />
-        </div>
+      <div className="space-y-3">
+        <Skeleton className="h-4 w-60" />
+        <Skeleton className="h-4 w-40" />
       </div>
+      <Skeleton className="w-20 h-8 ms-auto flex-none rounded-full" />
     </>
   )
 }
 
 export type AudioPrediction = {
   classes: string
-  accuracy: string
+  accuracy: number
 }
 
 export type AudioFile = {
@@ -50,6 +43,12 @@ export default function AudioClassification() {
   const [status, setStatus] = React.useState<Status>("idle")
   const previousAudioSrc = React.useRef<string | null>(null)
   const audioRef = React.useRef<HTMLAudioElement | null>(null)
+
+  const classes = {
+    hadrami: "Hadrami",
+    adeni: "Adeni",
+    lahji: "Lahji",
+  }
 
   const predict = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -70,8 +69,8 @@ export default function AudioClassification() {
 
         setStatus("success")
         setPrediction({
-          classes: result.prediction,
-          accuracy: result.accuracy,
+          classes: classes[result.prediction as keyof typeof classes],
+          accuracy: parseFloat(result.accuracy) * 100,
         })
       } catch (error) {
         setStatus("failed")
@@ -139,10 +138,13 @@ export default function AudioClassification() {
         onSubmit={predict}
         className="flex w-full flex-col gap-3"
       >
-        <div className="block space-y-1">
-          <Label className="text-muted-foreground">Prediction</Label>
-          <p className="text-sm text-primary">
-            Audio classification of AK12, M16, and M249 weapons.
+        <div className="mb-4 block space-y-1">
+          <h2 className="font-open-sans text-pretty text-3xl/snug font-bold tracking-tighter text-zinc-800">
+            Klasifikasi Musik
+          </h2>
+          <p className="text-pretty text-zinc-400">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo odio
+            nam temporibus minima ea voluptatibus.
           </p>
         </div>
         <div className="block space-y-1">
@@ -151,7 +153,10 @@ export default function AudioClassification() {
             className="text-muted-foreground"
           >
             <span>Select audio file</span>
-            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-600 dark:text-zinc-400">
+            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-500">
+              {".mp3"}
+            </span>
+            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-500">
               {".wav"}
             </span>
           </Label>
@@ -165,7 +170,10 @@ export default function AudioClassification() {
             required
           />
         </div>
-        <Button type="submit">
+        <Button
+          type="submit"
+          className=""
+        >
           {isPending ? (
             <div className="flex items-center gap-2">
               <LoaderCircleIcon className="animate-spin" />
@@ -192,11 +200,17 @@ export default function AudioClassification() {
                     </span>
                   </div>
                 ) : (
-                  <div className="flex flex-col leading-tight">
-                    <p className="text-xs text-muted-foreground">
-                      Diprediksi sebagai suara
+                  <div className="flex flex-col gap-1 leading-tight">
+                    <p className="text-muted-foreground">
+                      Diprediksi sebagai audio musik
                       <span className="ms-1 text-primary">
                         {prediction.classes}
+                      </span>
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Prediksi dengan akurasi
+                      <span className="ms-1 text-primary">
+                        {prediction.accuracy.toFixed(1)}%
                       </span>
                     </p>
                   </div>
