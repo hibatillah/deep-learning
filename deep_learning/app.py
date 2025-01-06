@@ -62,7 +62,7 @@ def home():
             endpoint for predictions.
         </p>"""
 
-
+# flask
 @app.route("/predict/audio", methods=["GET", "POST"])
 def audio():
     if request.method == "GET":
@@ -80,11 +80,10 @@ def audio():
             return jsonify({"error": "Audio is required"}), 400
 
         try:
-            predicted_class, accuracy = predict_audio(audio)
-
+            predicted_class, accuracy = predict_audio(audio)    # predict_audio
             response = jsonify({"prediction": predicted_class, "accuracy": accuracy})
-
             return response
+
         except Exception as e:
             return jsonify({"error": str(e)}), 500
 

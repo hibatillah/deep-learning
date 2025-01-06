@@ -10,34 +10,34 @@ import AudioClassification from "../_components/audio-classification"
 const items = [
   {
     id: "1",
-    title: "What makes Origin UI different?",
+    title: "Pengiriman Data",
     content:
-      "Origin UI focuses on developer experience and performance. Built with TypeScript, it offers excellent type safety, follows accessibility standards, and provides comprehensive documentation with regular updates.",
+      "Pengguna mengunggah file melalui antarmuka frontend, seperti gambar, audio, atau teks. File tersebut kemudian dikirim ke backend menggunakan API melalui metode HTTP, biasanya dengan metode POST. Backend memeriksa integritas file untuk memastikan data dapat diproses lebih lanjut.",
   },
   {
     id: "2",
-    title: "How can I customize the components?",
+    title: "Pra-Pemrosesan",
     content:
-      "Use our CSS variables for global styling, or className and style props for component-specific changes. We support CSS modules, Tailwind, and dark mode out of the box.",
+      "Backend menerima file yang dikirim, kemudian melakukan pra-pemrosesan seperti validasi format, normalisasi, atau ekstraksi fitur. Data yang telah diproses akan disesuaikan dengan format yang dibutuhkan oleh model deep learning agar dapat diprediksi dengan optimal.",
   },
   {
     id: "3",
-    title: "Is Origin UI optimized for performance?",
+    title: "Prediksi Model",
     content:
-      "Yes, with tree-shaking, code splitting, and minimal runtime overhead. Most components are under 5KB gzipped.",
+      "Model deep learning memproses data yang telah dipersiapkan, menganalisis pola, dan menghasilkan hasil prediksi berdasarkan pelatihan sebelumnya. Proses ini melibatkan inferensi model untuk mendapatkan output yang sesuai dengan tujuan, seperti klasifikasi atau deteksi. Hasil ini kemudian diubah menjadi format yang mudah dipahami oleh frontend.",
   },
   {
     id: "4",
-    title: "How accessible are the components?",
+    title: "Pengiriman Hasil",
     content:
-      "All components follow WAI-ARIA standards, featuring proper ARIA attributes, keyboard navigation, and screen reader support. Regular testing ensures compatibility with NVDA, VoiceOver, and JAWS.",
+      "Hasil prediksi yang dihasilkan oleh model dikirim kembali ke backend. Backend memformat hasil prediksi agar mudah dipahami, seperti menambahkan deskripsi atau tingkat kepercayaan hasil prediksi. Data yang sudah diformat dikirim kembali ke frontend melalui API untuk ditampilkan kepada pengguna",
   },
 ]
 
 function Tutorial() {
   return (
     <div className="space-y-4">
-      <h3 className="font-open-sans text-pretty text-xl/snug font-bold tracking-tighter text-zinc-800">
+      <h3 className="text-pretty font-open-sans text-xl/snug font-bold tracking-tighter text-zinc-800">
         Proses Klasifikasi
       </h3>
       <Accordion

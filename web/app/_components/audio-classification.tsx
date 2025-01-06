@@ -143,8 +143,9 @@ export default function AudioClassification() {
             Klasifikasi Musik
           </h2>
           <p className="text-pretty text-zinc-400">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo odio
-            nam temporibus minima ea voluptatibus.
+            Unggah file audio dan sistem akan mengidentifikasi jenis musik yaman
+            secara otomatis dengan akurasi tinggi. Mendukung format mp3 dan wav
+            untuk pengalaman yang mudah dan cepat.
           </p>
         </div>
         <div className="block space-y-1">
@@ -153,10 +154,10 @@ export default function AudioClassification() {
             className="text-muted-foreground"
           >
             <span>Select audio file</span>
-            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-500">
+            <span className="ms-1 rounded bg-indigo-100 px-1 text-xs text-indigo-500">
               {".mp3"}
             </span>
-            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-500">
+            <span className="ms-1 rounded bg-indigo-100 px-1 text-xs text-indigo-500">
               {".wav"}
             </span>
           </Label>
