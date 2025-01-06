@@ -1,17 +1,17 @@
 ## Deep Learning Project
 
-Deep Learning project for **text sentiment analysis**, **audio and image classifications**
+Deep Learning project for **text sentiment analysis**, **audio and image classifications**.
 
 ### Tech Stack
 - Deep learning project using Flask `v3.1.0`
 - Web project using Next.js `v14.2.17`
 - Python `v3.12`
 
-## Project Structure
+### Project Structure
 
-- Python API is located at [`/deep_learning/app.py`](./deep_learning/app.py)
-- Python models for prediction are located at [`/deep_learning/model`](./deep_learning/model)
-- API interaction for predictions and their forms are located at [`/web/app/_components`](./web/app/_components)
+- Python API is located at [`app.py`](./deep_learning/app.py)
+- Python models for prediction are located at [`/model`](./deep_learning/model) directory
+- API interaction for predictions and their forms are located at [`/app/_components`](./web/app/_components) directory
 
 ## Installation
 
@@ -33,33 +33,40 @@ venv/Scripts/activate
 
 ### Install Depedencies
 
-1. Install web depedencies
+1. Install root depedencies
+
+```bash
+npm install
+```
+
+2. Install `web` depedencies
 
 ```bash
 cd web
 npm install
 ```
 
-2. Install deep_learning depedencies
+3. Install `deep_learning` depedencies
 
 ```bash
 cd deep_learning
 venv/Scripts/activate  # activate venv
 pip install -r requirements.txt
 ```
+> Make sure to activate venv before install the depedencies
 
 ### Running Project
 
-1. Run deep_learning project
-
-```bash
-npm run dev:py
-```
-
-2. Run web project
+1. Run `web` project
 
 ```bash
 npm run dev:next
+```
+
+2. Run `deep_learning` project
+
+```bash
+npm run dev:py
 ```
 
 3. Run project concurrently

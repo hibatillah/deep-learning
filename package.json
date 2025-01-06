@@ -24,7 +24,8 @@
     "dev": "concurrently \"npm run dev:next\" \"npm run dev:py\"",
     "dev:next": "npm run dev --workspace=web",
     "dev:py": "cd deep_learning && python app.py",
-    "format": "npm run format --workspace=web"
+    "format": "npm run format --workspace=web",
+    "build:next": "npm run build --workspace=web"
   },
   "devDependencies": {
     "concurrently": "^9.1.0"
