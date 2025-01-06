@@ -152,6 +152,9 @@ export default function AudioClassification() {
           >
             <span>Select audio file</span>
             <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-600 dark:text-zinc-400">
+              {".mp3"}
+            </span>
+            <span className="ms-1 rounded bg-secondary px-1 text-xs text-zinc-600 dark:text-zinc-400">
               {".wav"}
             </span>
           </Label>
