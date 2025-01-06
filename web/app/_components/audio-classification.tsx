@@ -8,8 +8,6 @@ import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 
-import { Status } from "./text-sentiment"
-
 import { CircleAlertIcon, LoaderCircleIcon } from "lucide-react"
 
 function LoadingCard() {
@@ -19,7 +17,7 @@ function LoadingCard() {
         <Skeleton className="h-4 w-60" />
         <Skeleton className="h-4 w-40" />
       </div>
-      <Skeleton className="w-20 h-8 ms-auto flex-none rounded-full" />
+      <Skeleton className="ms-auto h-8 w-20 flex-none rounded-full" />
     </>
   )
 }
@@ -33,6 +31,8 @@ export type AudioFile = {
   name: string
   file: string
 }
+
+export type Status = "idle" | "success" | "failed"
 
 export default function AudioClassification() {
   const [isPending, startTransition] = React.useTransition()
@@ -139,7 +139,7 @@ export default function AudioClassification() {
         className="flex w-full flex-col gap-3"
       >
         <div className="mb-4 block space-y-1">
-          <h2 className="font-open-sans text-pretty text-3xl/snug font-bold tracking-tighter text-zinc-800">
+          <h2 className="text-pretty font-open-sans text-3xl/snug font-bold tracking-tighter text-zinc-800">
             Klasifikasi Musik
           </h2>
           <p className="text-pretty text-zinc-400">
@@ -177,7 +177,7 @@ export default function AudioClassification() {
           {isPending ? (
             <div className="flex items-center gap-2">
               <LoaderCircleIcon className="animate-spin" />
-              <span>Predicting...</span>
+              <span>Memprediksi...</span>
             </div>
           ) : (
             "Predict Audio"
@@ -196,7 +196,7 @@ export default function AudioClassification() {
                   <div className="flex items-center gap-3">
                     <CircleAlertIcon className="size-4 text-muted-foreground" />
                     <span className="text-sm text-primary">
-                      Failed to predict
+                      Gagal memprediksi audio
                     </span>
                   </div>
                 ) : (
