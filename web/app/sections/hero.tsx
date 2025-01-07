@@ -89,28 +89,24 @@ export default function Hero() {
           alt=""
           className="absolute -end-10 bottom-16 w-32 origin-bottom-left -rotate-12 lg:end-8"
           aria-hidden="true"
-          placeholder="blur"
         />
         <Image
           src={Ellipse2}
           alt=""
           className="absolute bottom-10 start-0 w-10 origin-bottom-left -rotate-12 lg:start-28"
           aria-hidden="true"
-          placeholder="blur"
         />
         <Image
           src={Vector3}
           alt=""
           className="absolute -start-20 bottom-24 w-10 origin-bottom-left -rotate-12"
           aria-hidden="true"
-          placeholder="blur"
         />
         <Image
           src={Vector2}
           alt=""
           className="absolute -top-10 end-64 w-10 origin-bottom-left -rotate-45"
           aria-hidden="true"
-          placeholder="blur"
         />
       </div>
 
@@ -120,7 +116,6 @@ export default function Hero() {
             src={yaman1}
             alt="yaman-1"
             className="size-full rounded-xl object-cover shadow-2xl"
-            placeholder="blur"
           />
         </div>
         <div className="bg-green-100 p-5 lg:p-10">
@@ -128,7 +123,6 @@ export default function Hero() {
             src={yaman2}
             alt="yaman-2"
             className="size-full rounded-xl object-cover shadow-2xl"
-            placeholder="blur"
           />
         </div>
       </div>

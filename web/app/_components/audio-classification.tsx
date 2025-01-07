@@ -82,7 +82,7 @@ export default function AudioClassification() {
   }
 
   const addAudioToPlayer = (file: File) => {
-    if (file && file.type === "audio/wav") {
+    if (file.type === "audio/wav" || file.type === "audio/mp3") {
       if (previousAudioSrc.current)
         URL.revokeObjectURL(previousAudioSrc.current)
 
@@ -165,7 +165,7 @@ export default function AudioClassification() {
             type="file"
             id="audio"
             name="audio"
-            accept="audio/wav"
+            accept=".wav, .mp3"
             onChange={handleFileChange}
             className="p-1 file:me-3 file:h-full file:cursor-pointer file:rounded file:bg-secondary file:px-2"
             required
@@ -181,7 +181,7 @@ export default function AudioClassification() {
               <span>Memprediksi...</span>
             </div>
           ) : (
-            "Predict Audio"
+            "Prediksi Audio"
           )}
         </Button>
       </form>
